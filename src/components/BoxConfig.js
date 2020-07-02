@@ -1,32 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { BlockPicker } from "react-color";
+import { ColorPicker } from "./ColorPicker";
 
-export const BoxConfig = ({ box }) => {
-  const [primary, setPrimary] = useState(false);
-  const [secondary, setSecondary] = useState(false);
-
+export const BoxConfig = ({ box, updateBox }) => {
   return (
     <StyledBoxConfig>
       <p>{box.name}</p>
       <div>
-        <div class="config-grid">
+        <div className="config-grid">
           <p>Color 1:</p>
-          <StyledColorPicker
-            color={box.primaryColor}
-            onClick={() => setPrimary(!primary)}
-          ></StyledColorPicker>
+          <ColorPicker
+            box={box}
+            updateBox={updateBox}
+            primary={true}
+          ></ColorPicker>
           <input></input>s
         </div>
-        <div class="config-grid">
+        <div className="config-grid">
           <p>Color 2:</p>
-          <StyledColorPicker
-            color={box.secondaryColor}
-            onClick={() => setSecondary(!secondary)}
-          ></StyledColorPicker>
-          {secondary ? (
-            <BlockPicker color={box.secondaryColor}></BlockPicker>
-          ) : null}
+          <ColorPicker
+            box={box}
+            updateBox={updateBox}
+            primary={false}
+          ></ColorPicker>
           <input></input>s
         </div>
       </div>
@@ -43,11 +39,4 @@ const StyledBoxConfig = styled.div`
     grid-auto-flow: column;
     grid-gap: 10px;
   }
-`;
-
-const StyledColorPicker = styled.div`
-  height: 20px;
-  width: 60px;
-  background-color: ${(props) => props.color};
-  border: 1px solid black;
 `;

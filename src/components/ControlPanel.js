@@ -2,11 +2,31 @@ import React from "react";
 import styled from "styled-components";
 import { BoxConfig } from "./BoxConfig";
 
-export const ControlPanel = ({ boxes }) => {
+export const ControlPanel = ({
+  boxes,
+  setBoxes,
+  background,
+  setBackground,
+}) => {
+  const updateBox = (updatedBox) => {
+    const updatedBoxes = boxes.map((box) => {
+      if (box.id === updatedBox.id) {
+        return updatedBox;
+      } else {
+        return box;
+      }
+    });
+
+    setBoxes(updatedBoxes);
+  };
+
   return (
     <StyledControlPanel>
-      {boxes.map((box) => {
-        return <BoxConfig box={box}></BoxConfig>;
+      <p>Background</p>
+      <BoxConfig box={background} updateBox={setBackground}></BoxConfig>
+
+      {boxes.map((box, i) => {
+        return <BoxConfig key={i} box={box} updateBox={updateBox}></BoxConfig>;
       })}
     </StyledControlPanel>
   );
@@ -14,4 +34,9 @@ export const ControlPanel = ({ boxes }) => {
 
 const StyledControlPanel = styled.div`
   background: white;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid "DBDBDB";
+  display: grid;
+  grid-gap: 10px;
 `;

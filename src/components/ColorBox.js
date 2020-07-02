@@ -1,17 +1,18 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 
-export const ColorBox = () => {
-    return (
-        <StyledColorBox>
-            
-        </StyledColorBox>
-    )
-}
+export const ColorBox = ({ box }) => {
+  return (
+    <StyledColorBox color={box.primaryColor}>
+      <p>{box.primaryColor}</p>
+      <p>{box.secondaryColor}</p>
+    </StyledColorBox>
+  );
+};
 
 const StyledColorBox = styled.div`
-background: white;
-height: 200px;
-width: 300px;
-margin: 0 auto;
-`
+  background: ${(props) => props.color};
+  height: 200px;
+  width: 300px;
+  margin: 0 auto;
+`;

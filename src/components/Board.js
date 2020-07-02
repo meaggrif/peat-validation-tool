@@ -4,10 +4,18 @@ import { ControlPanel } from "./ControlPanel";
 import styled from "styled-components";
 
 export const Board = () => {
+  const [background, setBackground] = useState({
+    primaryColor: "#231902",
+    secondaryColor: "#321902",
+    primaryDuration: 1,
+    secondaryDuration: 1,
+  });
+
   const [boxes, setBoxes] = useState([
     {
+      id: 1,
       name: "Box 1",
-      primaryColor: "#ffffff",
+      primaryColor: "#b4da55",
       secondaryColor: "#eaeaea",
       primaryDuration: 1,
       secondaryDuration: 1,
@@ -15,8 +23,9 @@ export const Board = () => {
       width: 100,
     },
     {
+      id: 2,
       name: "Box 2",
-      primaryColor: "#ffffff",
+      primaryColor: "#b4da55",
       secondaryColor: "#eaeaea",
       primaryDuration: 1,
       secondaryDuration: 1,
@@ -24,8 +33,9 @@ export const Board = () => {
       width: 100,
     },
     {
+      id: 3,
       name: "Box 3",
-      primaryColor: "#ffffff",
+      primaryColor: "#b4da55",
       secondaryColor: "#eaeaea",
       primaryDuration: 1,
       secondaryDuration: 1,
@@ -33,8 +43,9 @@ export const Board = () => {
       width: 100,
     },
     {
+      id: 4,
       name: "Box 4",
-      primaryColor: "#ffffff",
+      primaryColor: "#b4da55",
       secondaryColor: "#eaeaea",
       primaryDuration: 1,
       secondaryDuration: 1,
@@ -45,8 +56,13 @@ export const Board = () => {
 
   return (
     <StyledBoard>
-      <ControlPanel boxes={boxes}></ControlPanel>
-      <BackgroundBox boxes={boxes}></BackgroundBox>
+      <ControlPanel
+        boxes={boxes}
+        setBoxes={setBoxes}
+        background={background}
+        setBackground={setBackground}
+      ></ControlPanel>
+      <BackgroundBox boxes={boxes} background={background}></BackgroundBox>
     </StyledBoard>
   );
 };
