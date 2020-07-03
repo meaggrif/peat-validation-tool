@@ -1,8 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { ColorPicker } from "./ColorPicker";
 
 export const BoxConfig = ({ box, updateBox }) => {
+  const [primaryDuration, setPrimaryDuration] = useState(1);
+  const [secondaryDuration, setSecondaryDuration] = useState(
+    box.secondaryDuration
+  );
+
+  const updateBoxDuration = (e, boxType) => {
+    if (boxType === "PRIMARY") {
+      setPrimaryDuration(e.target.value);
+      updateBox({ ...box, primaryDuration: e.target.value });
+      return;
+    }
+
+    setSecondaryDuration(e.target.value);
+    updateBox({ ...box, secondaryDuration: e.target.value });
+  };
+
   return (
     <StyledBoxConfig>
       <p>{box.name}</p>
@@ -14,7 +30,12 @@ export const BoxConfig = ({ box, updateBox }) => {
             updateBox={updateBox}
             primary={true}
           ></ColorPicker>
-          <input></input>s
+          <input
+            type="number"
+            value={primaryDuration}
+            onChange={(e) => updateBoxDuration(e, "PRIMARY")}
+          ></input>
+          s
         </div>
         <div className="config-grid">
           <p>Color 2:</p>
@@ -23,7 +44,12 @@ export const BoxConfig = ({ box, updateBox }) => {
             updateBox={updateBox}
             primary={false}
           ></ColorPicker>
-          <input></input>s
+          <input
+            type="number"
+            value={secondaryDuration}
+            onChange={(e) => updateBoxDuration(e, "SECONDARY")}
+          ></input>
+          s
         </div>
       </div>
     </StyledBoxConfig>

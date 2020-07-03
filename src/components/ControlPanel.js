@@ -7,6 +7,8 @@ export const ControlPanel = ({
   setBoxes,
   background,
   setBackground,
+  isPlaying,
+  setIsPlaying,
 }) => {
   const updateBox = (updatedBox) => {
     const updatedBoxes = boxes.map((box) => {
@@ -28,6 +30,10 @@ export const ControlPanel = ({
       {boxes.map((box, i) => {
         return <BoxConfig key={i} box={box} updateBox={updateBox}></BoxConfig>;
       })}
+
+      <button onClick={() => setIsPlaying(!isPlaying)}>
+        {isPlaying ? "Stop" : "Play"}
+      </button>
     </StyledControlPanel>
   );
 };

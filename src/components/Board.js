@@ -4,6 +4,8 @@ import { ControlPanel } from "./ControlPanel";
 import styled from "styled-components";
 
 export const Board = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+
   const [background, setBackground] = useState({
     primaryColor: "#231902",
     secondaryColor: "#321902",
@@ -61,8 +63,14 @@ export const Board = () => {
         setBoxes={setBoxes}
         background={background}
         setBackground={setBackground}
+        isPlaying={isPlaying}
+        setIsPlaying={setIsPlaying}
       ></ControlPanel>
-      <BackgroundBox boxes={boxes} background={background}></BackgroundBox>
+      <BackgroundBox
+        boxes={boxes}
+        background={background}
+        isPlaying={isPlaying}
+      ></BackgroundBox>
     </StyledBoard>
   );
 };
