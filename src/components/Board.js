@@ -7,8 +7,8 @@ export const Board = () => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const [background, setBackground] = useState({
-    primaryColor: "#231902",
-    secondaryColor: "#321902",
+    primaryColor: "#000000",
+    secondaryColor: "#FFFFFF",
     primaryDuration: 1,
     secondaryDuration: 1,
   });
@@ -17,8 +17,8 @@ export const Board = () => {
     {
       id: 1,
       name: "Box 1",
-      primaryColor: "#b4da55",
-      secondaryColor: "#eaeaea",
+      primaryColor: "#B6B6B6",
+      secondaryColor: "#7EC6FA",
       primaryDuration: 1,
       secondaryDuration: 1,
       height: 100,
@@ -27,8 +27,8 @@ export const Board = () => {
     {
       id: 2,
       name: "Box 2",
-      primaryColor: "#b4da55",
-      secondaryColor: "#eaeaea",
+      primaryColor: "#B6B6B6",
+      secondaryColor: "#7EC6FA",
       primaryDuration: 1,
       secondaryDuration: 1,
       height: 100,
@@ -37,8 +37,8 @@ export const Board = () => {
     {
       id: 3,
       name: "Box 3",
-      primaryColor: "#b4da55",
-      secondaryColor: "#eaeaea",
+      primaryColor: "#B6B6B6",
+      secondaryColor: "#7EC6FA",
       primaryDuration: 1,
       secondaryDuration: 1,
       height: 100,
@@ -47,8 +47,8 @@ export const Board = () => {
     {
       id: 4,
       name: "Box 4",
-      primaryColor: "#b4da55",
-      secondaryColor: "#eaeaea",
+      primaryColor: "#B6B6B6",
+      secondaryColor: "#7EC6FA",
       primaryDuration: 1,
       secondaryDuration: 1,
       height: 100,
