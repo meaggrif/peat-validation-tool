@@ -14,6 +14,7 @@ export const BackgroundBox = ({ boxes, background, isPlaying }) => {
 
 const StyledBackgroundBox = styled.div`
   background: ${(props) => props.color};
+  position: relative;
   padding: 25px;
   display: grid;
   grid-template-columns: 1fr 1fr;

@@ -26,25 +26,39 @@ export const ColorBox = ({ box, isPlaying }) => {
         }
 
         setIsPrimary((primary) => !primary);
-      }, duration * 1000);
+      }, duration);
     };
 
     scheduleColorChange(box.primaryDuration);
   }, [isPlaying]);
 
-  return (
-    <StyledColorBox color={isPrimary ? box.primaryColor : box.secondaryColor}>
+  return box.visible ? (
+    <StyledColorBox
+      color={isPrimary ? box.primaryColor : box.secondaryColor}
+      height={box.height}
+      width={box.width}
+      x={box.x}
+      y={box.y}
+    >
+      <p>{box.id}</p>
       <p>{box.primaryColor}</p>
       <p>{box.secondaryColor}</p>
       <p>{box.primaryDuration}</p>
       <p>{box.secondaryDuration}</p>
+      <p>{box.height}</p>
+      <p>{box.width}</p>
     </StyledColorBox>
+  ) : (
+    <div></div>
   );
 };
 
 const StyledColorBox = styled.div`
+  position: absolute;
+  top: ${(props) => props.y + "px"};
+  left: ${(props) => props.x + "px"};
   background: ${(props) => props.color};
-  height: 200px;
-  width: 300px;
+  height: ${(props) => props.height + "px"};
+  width: ${(props) => props.width + "px"};
   margin: 0 auto;
 `;

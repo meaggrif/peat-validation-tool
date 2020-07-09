@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 export const ActionButtons = () => {
-    return (
-        <div>
-            Action Buttons
-        </div>
-    )
-}
+  return (
+    <div>
+      <button>Play</button>
+      <button>Save</button>
+      <button>Delete</button>
+    </div>
+  );
+};
