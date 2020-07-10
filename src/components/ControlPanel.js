@@ -24,6 +24,13 @@ export const ControlPanel = ({
 
   return (
     <StyledControlPanel>
+      <StyledButtonContainer>
+        <StyledButton onClick={() => setIsPlaying(!isPlaying)}>
+          {isPlaying ? "Stop" : "Play"}
+        </StyledButton>
+        <StyledButton>Save</StyledButton>
+        <StyledButton>Delete</StyledButton>
+      </StyledButtonContainer>
       <h3>Control Panel</h3>
       <BoxConfig
         box={background}
@@ -41,14 +48,6 @@ export const ControlPanel = ({
           ></BoxConfig>
         );
       })}
-
-      <StyledButtonContainer>
-        <StyledButton onClick={() => setIsPlaying(!isPlaying)}>
-          {isPlaying ? "Stop" : "Play"}
-        </StyledButton>
-        <StyledButton>Save</StyledButton>
-        <StyledButton>Delete</StyledButton>
-      </StyledButtonContainer>
     </StyledControlPanel>
   );
 };

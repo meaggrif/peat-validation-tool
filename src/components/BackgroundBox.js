@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ColorBox } from "./ColorBox";
+import { TestButtons } from "./TestButtons";
 import styled from "styled-components";
 
 export const BackgroundBox = ({ boxes, background, isPlaying }) => {
@@ -8,9 +9,11 @@ export const BackgroundBox = ({ boxes, background, isPlaying }) => {
   const isPlayingRef = useRef(isPlaying);
   isPlayingRef.current = isPlaying;
 
+  const isPrimaryRef = useRef(isPrimary);
+  isPrimaryRef.current = isPrimary;
+
   useEffect(() => {
-    isPlayingRef.current = isPlaying;
-    if (!isPlaying) {
+    if (!isPlayingRef.current) {
       return;
     }
 
@@ -20,7 +23,7 @@ export const BackgroundBox = ({ boxes, background, isPlaying }) => {
       }
 
       setTimeout(() => {
-        if (isPrimary) {
+        if (isPrimaryRef.current) {
           scheduleColorChange(background.secondaryDuration);
         } else {
           scheduleColorChange(background.primaryDuration);
@@ -39,11 +42,16 @@ export const BackgroundBox = ({ boxes, background, isPlaying }) => {
   ]);
 
   return (
-    <StyledBackgroundBox color={background.primaryColor}>
-      {boxes.map((box, i) => (
-        <ColorBox key={i} box={box} isPlaying={isPlaying}></ColorBox>
-      ))}
-    </StyledBackgroundBox>
+    <div>
+      <StyledBackgroundBox
+        color={isPrimary ? background.primaryColor : background.secondaryColor}
+      >
+        {boxes.map((box, i) => (
+          <ColorBox key={i} box={box} isPlaying={isPlaying}></ColorBox>
+        ))}
+      </StyledBackgroundBox>
+      <TestButtons></TestButtons>
+    </div>
   );
 };
 

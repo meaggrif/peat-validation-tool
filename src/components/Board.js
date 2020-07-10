@@ -9,8 +9,8 @@ export const Board = () => {
   const [background, setBackground] = useState({
     primaryColor: "#000000",
     secondaryColor: "#FFFFFF",
-    primaryDuration: 1,
-    secondaryDuration: 1,
+    primaryDuration: 333,
+    secondaryDuration: 333,
   });
 
   const [boxes, setBoxes] = useState([

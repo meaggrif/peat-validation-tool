@@ -70,21 +70,29 @@ export const BoxConfig = ({ box, updateBox, background }) => {
             ></StyledInput>
           </div>
           <div class="input-row">
-            <label>Height:</label>
-            <StyledInput
-              type="number"
-              max={250}
-              value={box.height}
-              onChange={(e) => updateBoxSize(e, "HEIGHT")}
-            ></StyledInput>
+            {background ? null : (
+              <React.Fragment>
+                <label>Height:</label>
+                <StyledInput
+                  type="number"
+                  max={250}
+                  value={box.height}
+                  onChange={(e) => updateBoxSize(e, "HEIGHT")}
+                ></StyledInput>
+              </React.Fragment>
+            )}
           </div>
           <div class="input-row">
-            <label>X:</label>
-            <StyledInput
-              type="number"
-              value={box.x}
-              onChange={(e) => updateBoxCoord(e, "X")}
-            ></StyledInput>
+            {background ? null : (
+              <React.Fragment>
+                <label>X:</label>
+                <StyledInput
+                  type="number"
+                  value={box.x}
+                  onChange={(e) => updateBoxCoord(e, "X")}
+                ></StyledInput>
+              </React.Fragment>
+            )}
           </div>
         </div>
 
@@ -107,21 +115,29 @@ export const BoxConfig = ({ box, updateBox, background }) => {
             ></StyledInput>
           </div>
           <div class="input-row">
-            <label>Width:</label>
-            <StyledInput
-              type="number"
-              max={300}
-              value={box.width}
-              onChange={(e) => updateBoxSize(e, "WIDTH")}
-            ></StyledInput>
+            {background ? null : (
+              <React.Fragment>
+                <label>Width:</label>
+                <StyledInput
+                  type="number"
+                  max={300}
+                  value={box.width}
+                  onChange={(e) => updateBoxSize(e, "WIDTH")}
+                ></StyledInput>
+              </React.Fragment>
+            )}
           </div>
           <div class="input-row">
-            <label>Y:</label>
-            <StyledInput
-              type="number"
-              value={box.y}
-              onChange={(e) => updateBoxCoord(e, "Y")}
-            ></StyledInput>
+            {background ? null : (
+              <React.Fragment>
+                <label>Y:</label>
+                <StyledInput
+                  type="number"
+                  value={box.y}
+                  onChange={(e) => updateBoxCoord(e, "Y")}
+                ></StyledInput>
+              </React.Fragment>
+            )}
           </div>
         </div>
       </div>
