@@ -24,16 +24,31 @@ export const ControlPanel = ({
 
   return (
     <StyledControlPanel>
-      <p>Background</p>
-      <BoxConfig box={background} updateBox={setBackground}></BoxConfig>
+      <h3>Control Panel</h3>
+      <BoxConfig
+        box={background}
+        updateBox={setBackground}
+        background={true}
+      ></BoxConfig>
 
       {boxes.map((box, i) => {
-        return <BoxConfig key={i} box={box} updateBox={updateBox}></BoxConfig>;
+        return (
+          <BoxConfig
+            key={i}
+            box={box}
+            updateBox={updateBox}
+            background={false}
+          ></BoxConfig>
+        );
       })}
 
-      <button onClick={() => setIsPlaying(!isPlaying)}>
-        {isPlaying ? "Stop" : "Play"}
-      </button>
+      <StyledButtonContainer>
+        <StyledButton onClick={() => setIsPlaying(!isPlaying)}>
+          {isPlaying ? "Stop" : "Play"}
+        </StyledButton>
+        <StyledButton>Save</StyledButton>
+        <StyledButton>Delete</StyledButton>
+      </StyledButtonContainer>
     </StyledControlPanel>
   );
 };
@@ -46,4 +61,14 @@ const StyledControlPanel = styled.div`
   border: 1px solid "DBDBDB";
   grid-gap: 10px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 10px, rgba(0, 0, 0, 0.16) 0px 2px 5px;
+`;
+
+const StyledButton = styled.button`
+  width: 50px;
+  height: 25px;
+  margin: 10px;
+`;
+
+const StyledButtonContainer = styled.div`
+  display: inline-block;
 `;

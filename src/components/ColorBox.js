@@ -4,12 +4,14 @@ import styled from "styled-components";
 export const ColorBox = ({ box, isPlaying }) => {
   const [isPrimary, setIsPrimary] = useState(true);
 
-  const isPlayingRef = useRef(isPrimary);
-  isPlayingRef.current = isPrimary;
+  const isPlayingRef = useRef(isPlaying);
+  isPlayingRef.current = isPlaying;
+
+  const isPrimaryRef = useRef(isPrimary);
+  isPrimaryRef.current = isPrimary;
 
   useEffect(() => {
-    isPlayingRef.current = isPrimary;
-    if (!isPlaying) {
+    if (!isPlayingRef.current) {
       return;
     }
 
@@ -19,7 +21,7 @@ export const ColorBox = ({ box, isPlaying }) => {
       }
 
       setTimeout(() => {
-        if (isPrimary) {
+        if (isPrimaryRef.current) {
           scheduleColorChange(box.secondaryDuration);
         } else {
           scheduleColorChange(box.primaryDuration);
@@ -30,7 +32,7 @@ export const ColorBox = ({ box, isPlaying }) => {
     };
 
     scheduleColorChange(box.primaryDuration);
-  }, [isPlaying]);
+  }, [box.primaryDuration, box.secondaryDuration, isPlaying, isPrimary]);
 
   return box.visible ? (
     <StyledColorBox
@@ -39,15 +41,7 @@ export const ColorBox = ({ box, isPlaying }) => {
       width={box.width}
       x={box.x}
       y={box.y}
-    >
-      <p>{box.id}</p>
-      <p>{box.primaryColor}</p>
-      <p>{box.secondaryColor}</p>
-      <p>{box.primaryDuration}</p>
-      <p>{box.secondaryDuration}</p>
-      <p>{box.height}</p>
-      <p>{box.width}</p>
-    </StyledColorBox>
+    ></StyledColorBox>
   ) : (
     <div></div>
   );

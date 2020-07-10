@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { ColorPicker } from "./ColorPicker";
 
-export const BoxConfig = ({ box, updateBox }) => {
+export const BoxConfig = ({ box, updateBox, background }) => {
   const updateBoxDuration = (e, boxType) => {
     if (boxType === "PRIMARY") {
       updateBox({ ...box, primaryDuration: e.target.value });
@@ -34,79 +34,95 @@ export const BoxConfig = ({ box, updateBox }) => {
   };
 
   return (
-    <StyledBoxConfig>
-      <div>
-        <div className="config-grid">
+    <StyledBoxConfig visible={box.visible}>
+      <div class="header">
+        {background ? (
+          <b>Background</b>
+        ) : (
           <StyledLabel>
             <input
               type="checkbox"
               checked={box.visible}
               onChange={() => updateBoxVisibility()}
             ></input>
-            {box.name}
+            <b> {box.name}</b>
           </StyledLabel>
+        )}
+      </div>
+
+      {/* Left Column */}
+      <div class="input-grid">
+        <div>
+          <div class="input-row">
+            <label>Color 1:</label>
+            <ColorPicker
+              box={box}
+              updateBox={updateBox}
+              primary={true}
+            ></ColorPicker>
+          </div>
+          <div class="input-row">
+            <label>Dur 1:</label>
+            <StyledInput
+              type="number"
+              value={box.primaryDuration}
+              onChange={(e) => updateBoxDuration(e, "PRIMARY")}
+            ></StyledInput>
+          </div>
+          <div class="input-row">
+            <label>Height:</label>
+            <StyledInput
+              type="number"
+              max={250}
+              value={box.height}
+              onChange={(e) => updateBoxSize(e, "HEIGHT")}
+            ></StyledInput>
+          </div>
+          <div class="input-row">
+            <label>X:</label>
+            <StyledInput
+              type="number"
+              value={box.x}
+              onChange={(e) => updateBoxCoord(e, "X")}
+            ></StyledInput>
+          </div>
         </div>
-        <div className="config-grid">
-          <label>C1:</label>
-          <ColorPicker
-            box={box}
-            updateBox={updateBox}
-            primary={true}
-          ></ColorPicker>
-          <label>C2:</label>
-          <ColorPicker
-            box={box}
-            updateBox={updateBox}
-            primary={false}
-          ></ColorPicker>
-        </div>
-        <div className="config-grid">
-          <label>Dur 1:</label>
-          <StyledInput
-            type="number"
-            value={box.primaryDuration}
-            onChange={(e) => updateBoxDuration(e, "PRIMARY")}
-          ></StyledInput>
-          ms
-          <label>Dur 2:</label>
-          <StyledInput
-            type="number"
-            value={box.secondaryDuration}
-            onChange={(e) => updateBoxDuration(e, "SECONDARY")}
-          ></StyledInput>
-          ms
-        </div>
-        <div className="config-grid">
-          <label>Height:</label>
-          <StyledInput
-            type="number"
-            max={250}
-            value={box.height}
-            onChange={(e) => updateBoxSize(e, "HEIGHT")}
-          ></StyledInput>
-          px
-          <label>Width:</label>
-          <StyledInput
-            type="number"
-            max={300}
-            value={box.width}
-            onChange={(e) => updateBoxSize(e, "WIDTH")}
-          ></StyledInput>
-          px
-        </div>
-        <div className="config-grid">
-          <label>X:</label>
-          <StyledInput
-            type="number"
-            value={box.x}
-            onChange={(e) => updateBoxCoord(e, "X")}
-          ></StyledInput>
-          <label>Y:</label>
-          <StyledInput
-            type="number"
-            value={box.y}
-            onChange={(e) => updateBoxCoord(e, "Y")}
-          ></StyledInput>
+
+        {/* Right Column */}
+        <div>
+          <div class="input-row">
+            <label>Color 2:</label>
+            <ColorPicker
+              box={box}
+              updateBox={updateBox}
+              primary={false}
+            ></ColorPicker>
+          </div>
+          <div class="input-row">
+            <label>Dur 2:</label>
+            <StyledInput
+              type="number"
+              value={box.secondaryDuration}
+              onChange={(e) => updateBoxDuration(e, "SECONDARY")}
+            ></StyledInput>
+          </div>
+          <div class="input-row">
+            <label>Width:</label>
+            <StyledInput
+              type="number"
+              max={300}
+              value={box.width}
+              onChange={(e) => updateBoxSize(e, "WIDTH")}
+            ></StyledInput>
+          </div>
+          <div class="input-row">
+            <label>Y:</label>
+            <StyledInput
+              type="number"
+              value={box.y}
+              onChange={(e) => updateBoxCoord(e, "Y")}
+            ></StyledInput>
+          </div>
         </div>
       </div>
     </StyledBoxConfig>
@@ -114,15 +130,31 @@ export const BoxConfig = ({ box, updateBox }) => {
 };
 
 const StyledBoxConfig = styled.div`
-  label {
-    white-space: nowrap;
+  border: 2px solid ${(props) => (props.visible ? "#7EC6FA" : "#DBDBDB")};
+  border-radius: 10px;
+  padding: 1rem;
+
+  .header {
+    margin-bottom: 1rem;
   }
-  .config-grid {
+
+  .checkbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .input-grid {
     display: grid;
-    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr;
     grid-gap: 10px;
   }
-  border: 1px solid black;
+
+  .input-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 `;
 
 const StyledInput = styled.input`

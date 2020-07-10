@@ -1,14 +1,21 @@
 import React from "react";
+import styled from "styled-components";
 
 export const TestButtons = () => {
   return (
     <div>
-      <button>Test 1</button>
-      <button>Test 2</button>
-      <button>Test 3</button>
-      <button>Test 4</button>
-      <button>Test 5</button>
-      <button>Test 6</button>
+      <StyledButton>Test 1</StyledButton>
+      <StyledButton>Test 2</StyledButton>
+      <StyledButton>Test 3</StyledButton>
+      <StyledButton>Test 4</StyledButton>
+      <StyledButton>Test 5</StyledButton>
+      <StyledButton>Test 6</StyledButton>
     </div>
   );
 };
+
+const StyledButton = styled.button`
+  width: 100px;
+  height: 25px;
+  margin: 10px;
+`;
