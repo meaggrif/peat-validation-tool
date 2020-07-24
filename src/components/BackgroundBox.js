@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
-import { ColorBox } from "./ColorBox";
-import { TestButtons } from "./TestButtons";
-import styled from "styled-components";
+import React, { useEffect, useState } from 'react';
+import { ColorBox } from './ColorBox';
+import { TestButtons } from './TestButtons';
+import styled from 'styled-components';
 
 export const BackgroundBox = ({
   boxes,
@@ -13,24 +13,14 @@ export const BackgroundBox = ({
 }) => {
   const [isPrimary, setIsPrimary] = useState(true);
 
-  const isPlayingRef = useRef(isPlaying);
-  isPlayingRef.current = isPlaying;
-
-  const isPrimaryRef = useRef(isPrimary);
-  isPrimaryRef.current = isPrimary;
-
   useEffect(() => {
-    if (!isPlayingRef.current) {
+    if (!isPlaying) {
       return;
     }
 
     const scheduleColorChange = (duration) => {
-      if (!isPlayingRef.current) {
-        return;
-      }
-
       setTimeout(() => {
-        if (isPrimaryRef.current) {
+        if (isPrimary) {
           scheduleColorChange(background.secondaryDuration);
         } else {
           scheduleColorChange(background.primaryDuration);
@@ -41,12 +31,7 @@ export const BackgroundBox = ({
     };
 
     scheduleColorChange(background.primaryDuration);
-  }, [
-    background.primaryDuration,
-    background.secondaryDuration,
-    isPlaying,
-    isPrimary,
-  ]);
+  }, [isPlaying]);
 
   return (
     <div>

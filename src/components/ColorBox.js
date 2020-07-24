@@ -1,27 +1,17 @@
-import React, { useState, useEffect, useRef } from "react";
-import styled from "styled-components";
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 
 export const ColorBox = ({ box, isPlaying }) => {
   const [isPrimary, setIsPrimary] = useState(true);
 
-  const isPlayingRef = useRef(isPlaying);
-  isPlayingRef.current = isPlaying;
-
-  const isPrimaryRef = useRef(isPrimary);
-  isPrimaryRef.current = isPrimary;
-
   useEffect(() => {
-    if (!isPlayingRef.current) {
+    if (!isPlaying) {
       return;
     }
 
     const scheduleColorChange = (duration) => {
-      if (!isPlayingRef.current) {
-        return;
-      }
-
       setTimeout(() => {
-        if (isPrimaryRef.current) {
+        if (isPrimary) {
           scheduleColorChange(box.secondaryDuration);
         } else {
           scheduleColorChange(box.primaryDuration);
@@ -31,8 +21,9 @@ export const ColorBox = ({ box, isPlaying }) => {
       }, duration);
     };
 
+    console.log('Called Schedule Color Change');
     scheduleColorChange(box.primaryDuration);
-  }, [box.primaryDuration, box.secondaryDuration, isPlaying, isPrimary]);
+  }, [isPlaying]);
 
   return box.visible ? (
     <StyledColorBox
@@ -49,10 +40,10 @@ export const ColorBox = ({ box, isPlaying }) => {
 
 const StyledColorBox = styled.div`
   position: absolute;
-  top: ${(props) => props.y + "px"};
-  left: ${(props) => props.x + "px"};
+  top: ${(props) => props.y + 'px'};
+  left: ${(props) => props.x + 'px'};
   background: ${(props) => props.color};
-  height: ${(props) => props.height + "px"};
-  width: ${(props) => props.width + "px"};
+  height: ${(props) => props.height + 'px'};
+  width: ${(props) => props.width + 'px'};
   margin: 0 auto;
 `;
