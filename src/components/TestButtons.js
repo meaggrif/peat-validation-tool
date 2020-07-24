@@ -25,18 +25,19 @@ import styled from "styled-components";
  */
 export const TestButtons = ({ testSets, setBackground, setBoxes }) => {
   const handleButtonClick = (testSet) => {
-    // setBackground(testSet.background);
-    // setBoxes(testSet.boxes);
+    setBoxes(testSet.slice(0, 4));
+    setBackground(testSet[4]);
   };
 
   return (
     <div>
-      <StyledButton>Test 1</StyledButton>
-      <StyledButton>Test 2</StyledButton>
-      <StyledButton>Test 3</StyledButton>
-      <StyledButton>Test 4</StyledButton>
-      <StyledButton>Test 5</StyledButton>
-      <StyledButton>Test 6</StyledButton>
+      {Object.entries(testSets).map(([testSetId, testSet]) => {
+        return (
+          <StyledButton onClick={() => handleButtonClick(testSet)}>
+            Test {testSetId}
+          </StyledButton>
+        );
+      })}
     </div>
   );
 };

@@ -17,6 +17,7 @@ export const ControlPanel = ({
   setBackground,
   isPlaying,
   setIsPlaying,
+  setTestSets,
 }) => {
   const updateBox = (updatedBox) => {
     const updatedBoxes = boxes.map((box) => {
@@ -32,8 +33,14 @@ export const ControlPanel = ({
 
   const handleFileUpload = (data) => {
     // Split the data by testSetId
-    // const testSets = ..... (magic sauce) ✨
-    // setTestSets(testSets)
+    const testSets = { 1: [], 2: [], 3: [], 4: [], 5: [], 6: [] };
+    for (const box of data) {
+      testSets[box.testSetId].push(box);
+    }
+    setTestSets(testSets);
+    debugger;
+    setBoxes(testSets[1].slice(0, 4));
+    setBackground(testSets[1][4]);
   };
 
   return (
@@ -48,7 +55,9 @@ export const ControlPanel = ({
           data={[...boxes, background]}
           filename={"peat-export.csv"}
           headers={[
+            "id",
             "name",
+            "visible",
             "primaryColor",
             "secondaryColor",
             "primaryDuration",

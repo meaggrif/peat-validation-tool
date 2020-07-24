@@ -3,7 +3,14 @@ import { ColorBox } from "./ColorBox";
 import { TestButtons } from "./TestButtons";
 import styled from "styled-components";
 
-export const BackgroundBox = ({ boxes, background, isPlaying }) => {
+export const BackgroundBox = ({
+  boxes,
+  background,
+  isPlaying,
+  testSets,
+  setBoxes,
+  setBackground,
+}) => {
   const [isPrimary, setIsPrimary] = useState(true);
 
   const isPlayingRef = useRef(isPlaying);
@@ -51,9 +58,9 @@ export const BackgroundBox = ({ boxes, background, isPlaying }) => {
         ))}
       </StyledBackgroundBox>
       <TestButtons
-        testSets={[]}
-        setBoxes={() => {}}
-        setBackground={() => {}}
+        testSets={testSets}
+        setBoxes={setBoxes}
+        setBackground={setBackground}
       ></TestButtons>
     </div>
   );

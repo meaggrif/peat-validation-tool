@@ -7,6 +7,7 @@ import styled from "styled-components";
 
 export const Board = () => {
   // TODO: Setup useState for testSets
+  const [testSets, setTestSets] = useState({});
   const [isPlaying, setIsPlaying] = useState(false);
   const [background, setBackground] = useState(defaultBackground);
   const [boxes, setBoxes] = useState(defaultBoxes);
@@ -20,11 +21,15 @@ export const Board = () => {
         setBackground={setBackground}
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
+        setTestSets={setTestSets}
       ></ControlPanel>
       <BackgroundBox
         boxes={boxes}
         background={background}
         isPlaying={isPlaying}
+        testSets={testSets}
+        setBoxes={setBoxes}
+        setBackground={setBackground}
       ></BackgroundBox>
     </StyledBoard>
   );
