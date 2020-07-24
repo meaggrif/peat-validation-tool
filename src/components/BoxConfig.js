@@ -35,7 +35,7 @@ export const BoxConfig = ({ box, updateBox, background }) => {
 
   return (
     <StyledBoxConfig visible={box.visible}>
-      <div class="header">
+      <div className="header">
         {background ? (
           <b>Background</b>
         ) : (
@@ -51,9 +51,9 @@ export const BoxConfig = ({ box, updateBox, background }) => {
       </div>
 
       {/* Left Column */}
-      <div class="input-grid">
+      <div className="input-grid">
         <div>
-          <div class="input-row">
+          <div className="input-row">
             <label>Color 1:</label>
             <ColorPicker
               box={box}
@@ -61,7 +61,7 @@ export const BoxConfig = ({ box, updateBox, background }) => {
               primary={true}
             ></ColorPicker>
           </div>
-          <div class="input-row">
+          <div className="input-row">
             <label>Dur 1:</label>
             <StyledInput
               type="number"
@@ -69,7 +69,7 @@ export const BoxConfig = ({ box, updateBox, background }) => {
               onChange={(e) => updateBoxDuration(e, "PRIMARY")}
             ></StyledInput>
           </div>
-          <div class="input-row">
+          <div className="input-row">
             {background ? null : (
               <React.Fragment>
                 <label>Height:</label>
@@ -82,7 +82,7 @@ export const BoxConfig = ({ box, updateBox, background }) => {
               </React.Fragment>
             )}
           </div>
-          <div class="input-row">
+          <div className="input-row">
             {background ? null : (
               <React.Fragment>
                 <label>X:</label>
@@ -98,7 +98,7 @@ export const BoxConfig = ({ box, updateBox, background }) => {
 
         {/* Right Column */}
         <div>
-          <div class="input-row">
+          <div className="input-row">
             <label>Color 2:</label>
             <ColorPicker
               box={box}
@@ -106,7 +106,7 @@ export const BoxConfig = ({ box, updateBox, background }) => {
               primary={false}
             ></ColorPicker>
           </div>
-          <div class="input-row">
+          <div className="input-row">
             <label>Dur 2:</label>
             <StyledInput
               type="number"
@@ -114,7 +114,7 @@ export const BoxConfig = ({ box, updateBox, background }) => {
               onChange={(e) => updateBoxDuration(e, "SECONDARY")}
             ></StyledInput>
           </div>
-          <div class="input-row">
+          <div className="input-row">
             {background ? null : (
               <React.Fragment>
                 <label>Width:</label>
@@ -127,7 +127,7 @@ export const BoxConfig = ({ box, updateBox, background }) => {
               </React.Fragment>
             )}
           </div>
-          <div class="input-row">
+          <div className="input-row">
             {background ? null : (
               <React.Fragment>
                 <label>Y:</label>

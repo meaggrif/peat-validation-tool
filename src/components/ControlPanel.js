@@ -1,6 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import { BoxConfig } from "./BoxConfig";
+import { CSVLink } from "react-csv";
+import CSVReader from "react-csv-reader";
+
+const parseOptions = {
+  header: true,
+  dynamicTyping: true,
+  skipEmptyLines: true,
+};
 
 export const ControlPanel = ({
   boxes,
@@ -22,6 +30,12 @@ export const ControlPanel = ({
     setBoxes(updatedBoxes);
   };
 
+  const handleFileUpload = (data) => {
+    // Split the data by testSetId
+    // const testSets = ..... (magic sauce) ✨
+    // setTestSets(testSets)
+  };
+
   return (
     <StyledControlPanel>
       <StyledButtonContainer>
@@ -30,7 +44,31 @@ export const ControlPanel = ({
         </StyledButton>
         <StyledButton>Save</StyledButton>
         <StyledButton>Delete</StyledButton>
+        <CSVLink
+          data={[...boxes, background]}
+          filename={"peat-export.csv"}
+          headers={[
+            "name",
+            "primaryColor",
+            "secondaryColor",
+            "primaryDuration",
+            "secondaryDuration",
+            "height",
+            "width",
+            "x",
+            "y",
+          ]}
+          target="_blank"
+        >
+          Export
+        </CSVLink>
       </StyledButtonContainer>
+
+      <CSVReader
+        parserOptions={parseOptions}
+        onFileLoaded={(data, fileInfo) => handleFileUpload(data)}
+      />
+
       <h3>Control Panel</h3>
       <BoxConfig
         box={background}

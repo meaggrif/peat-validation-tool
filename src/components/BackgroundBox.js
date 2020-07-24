@@ -50,7 +50,11 @@ export const BackgroundBox = ({ boxes, background, isPlaying }) => {
           <ColorBox key={i} box={box} isPlaying={isPlaying}></ColorBox>
         ))}
       </StyledBackgroundBox>
-      <TestButtons></TestButtons>
+      <TestButtons
+        testSets={[]}
+        setBoxes={() => {}}
+        setBackground={() => {}}
+      ></TestButtons>
     </div>
   );
 };
