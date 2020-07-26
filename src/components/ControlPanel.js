@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import { BoxConfig } from './BoxConfig';
-import { CSVLink } from 'react-csv';
-import CSVReader from 'react-csv-reader';
+import React from "react";
+import styled from "styled-components";
+import { BoxConfig } from "./BoxConfig";
+import { CSVLink } from "react-csv";
+import CSVReader from "react-csv-reader";
 
 const parseOptions = {
   header: true,
@@ -59,25 +59,25 @@ export const ControlPanel = ({
     <StyledControlPanel>
       <StyledButtonContainer>
         <StyledButton onClick={handlePlayStop}>
-          {isPlaying ? 'Stop' : 'Play'}
+          {isPlaying ? "Stop" : "Play"}
         </StyledButton>
         <StyledButton>Save</StyledButton>
         <StyledButton>Delete</StyledButton>
         <CSVLink
           data={[...boxes, background]}
-          filename={'peat-export.csv'}
+          filename={"peat-export.csv"}
           headers={[
-            'id',
-            'name',
-            'visible',
-            'primaryColor',
-            'secondaryColor',
-            'primaryDuration',
-            'secondaryDuration',
-            'height',
-            'width',
-            'x',
-            'y',
+            "id",
+            "name",
+            "visible",
+            "primaryColor",
+            "secondaryColor",
+            "primaryDuration",
+            "secondaryDuration",
+            "height",
+            "width",
+            "x",
+            "y",
           ]}
           target="_blank"
         >
@@ -116,7 +116,7 @@ const StyledControlPanel = styled.div`
   padding: 10px;
   border-radius: 10px;
   display: grid;
-  border: 1px solid 'DBDBDB';
+  border: 1px solid "DBDBDB";
   grid-gap: 10px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 10px, rgba(0, 0, 0, 0.16) 0px 2px 5px;
 `;

@@ -6,7 +6,6 @@ import { defaultBackground } from "../utils/defaultBackground";
 import styled from "styled-components";
 
 export const Board = () => {
-  // TODO: Setup useState for testSets
   const [testSets, setTestSets] = useState({});
   const [isPlaying, setIsPlaying] = useState(false);
   const [background, setBackground] = useState(defaultBackground);

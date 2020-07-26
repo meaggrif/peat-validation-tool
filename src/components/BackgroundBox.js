@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { ColorBox } from './ColorBox';
-import { TestButtons } from './TestButtons';
-import styled from 'styled-components';
+import React, { useEffect, useState } from "react";
+import { ColorBox } from "./ColorBox";
+import { TestButtons } from "./TestButtons";
+import styled from "styled-components";
 
 export const BackgroundBox = ({
   boxes,

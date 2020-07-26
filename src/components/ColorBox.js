@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
 
 export const ColorBox = ({ box, isPlaying }) => {
   const [isPrimary, setIsPrimary] = useState(true);
@@ -21,7 +21,6 @@ export const ColorBox = ({ box, isPlaying }) => {
       }, duration);
     };
 
-    console.log('Called Schedule Color Change');
     scheduleColorChange(box.primaryDuration);
   }, [isPlaying]);
 
@@ -40,10 +39,10 @@ export const ColorBox = ({ box, isPlaying }) => {
 
 const StyledColorBox = styled.div`
   position: absolute;
-  top: ${(props) => props.y + 'px'};
-  left: ${(props) => props.x + 'px'};
+  top: ${(props) => props.y + "px"};
+  left: ${(props) => props.x + "px"};
   background: ${(props) => props.color};
-  height: ${(props) => props.height + 'px'};
-  width: ${(props) => props.width + 'px'};
+  height: ${(props) => props.height + "px"};
+  width: ${(props) => props.width + "px"};
   margin: 0 auto;
 `;
