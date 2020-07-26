@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { BlockPicker, ChromePicker } from "react-color";
+import { ChromePicker } from "react-color";
 
 export const ColorPicker = ({ box, updateBox, primary }) => {
   const [open, setOpen] = useState(false);
